@@ -22,9 +22,9 @@ WELCM-65008	2022-10-12 1:10	2023-07-28 1:17	52f99826-4082-462e-be3c-15d77a7b25d1
 WELCM-65930	2022-11-14 1:19	2023-08-26 16:33	52f99826-4082-462e-be3c-15d77a7b25d1	0.0	Open	Major	WCMR_FastTrack_corrections	(ISC)2 CCSP Certified Cloud Security Professional Official Practice Tests, 3rd Edition tb909408.CCSPPT3E.c06.087
 WELCM-67963	2023-02-03 1:14	2023-08-26 16:13	52f99826-4082-462e-be3c-15d77a7b25d1	0.0	Open	Major	WCMR_FastTrack_corrections	(ISC)2 CCSP Certified Cloud Security Professional Official Practice Tests, 3rd Edition tb909408.CCSPPT3E.pt1.030
 WELCM-64937	2022-10-10 1:14	2023-09-29 1:06	52f99826-4082-462e-be3c-15d77a7b25d1	0.0	Open	Major	WCMR_FastTrack_corrections	(ISC)2 CCSP Certified Cloud Security Professional Official Practice Tests, 3rd Edition tb909408.CCSPPT3E.pt2.009
+WELCM-65956	2022-11-16 6:54	2023-10-27 12:10	9c683373-2f4b-436a-91aa-0d273629cfda	0.0	Open	Major	WCMR_FastTrack_corrections	(ISC)2 CCSP Certified Cloud Security Professional Official Study Guide, 3rd Edition tb909378.CCSPSG3E.c05.002  
 WELCM-68008	2023-02-06 1:19	2024-01-08 22:07	9696eb51-d0f5-4275-8e7e-b2ee026fe3e0	5.0	In Progress	Major	pmikhailov	(ISC)2 SSCP Official Practice Tests, Second Edition tb852070.SSCPPT2E.c04.33
 WELCM-57707	2022-01-12 10:37	2024-01-08 15:14	9696eb51-d0f5-4275-8e7e-b2ee026fe3e0	2.0	In Progress	Major	WCMR_FastTrack_corrections	(ISC)2 SSCP Official Practice Tests, Second Edition tb852070.SSCPPT2E.c06.30
-WELCM-52255	2021-07-25 21:25	2024-01-12 17:11	9f253520-9a12-4f12-a288-f29eb43d1f68	2.0	In Progress	Major	WCMR_FastTrack_corrections	(ISC)2 SSCP Official Study Guide, 2nd Edition tb542940.SSCPSG2E.c04.01
 WELCM-67826	2023-01-31 1:14	2023-11-06 1:07	d9fdbe88-8bcd-499c-963d-8a8c9723e8dd	0.0	Open	Major	WCMR_FastTrack_corrections	AWS CSA Study Guide 4E: Associate Exam: SAA-C03 982623.AWSCML.PE01.002
 WELCM-66492	2022-12-05 1:18	2023-04-11 16:33	d9fdbe88-8bcd-499c-963d-8a8c9723e8dd	0.0	Open	Major	WCMR_FastTrack_corrections	AWS CSA Study Guide 4E: Associate Exam: SAA-C03 982623.AWSCML.PE01.013
 WELCM-66001	2022-11-16 6:59	2023-10-06 1:05	d9fdbe88-8bcd-499c-963d-8a8c9723e8dd	0.0	Open	Major	WCMR_FastTrack_corrections	AWS CSA Study Guide 4E: Associate Exam: SAA-C03 982623.AWSCML.PE01.019
@@ -69,9 +69,6 @@ WELCM-63832	2022-08-29 1:12	2023-04-11 16:30	082fa2e2-8fb2-4078-a2e0-2f50e716ce6
 WELCM-72146	2023-09-25 1:05	2023-10-27 12:10	6d2c2906-d636-46ac-a67e-c7a5abc88549	0.0	Open	Major	WCMR_FastTrack_corrections	CCNA Certification Study Guide tb659181.CCNACert.SG.c07.01
 WELCM-67368	2023-01-16 1:16	2023-04-11 16:29	6d2c2906-d636-46ac-a67e-c7a5abc88549	0.0	Open	Major	WCMR_FastTrack_corrections	CCNA Certification Study Guide tb659181.CCNACert.SG.c13.03
 WELCM-63213	2022-08-08 1:17	2023-12-15 1:05	6d2c2906-d636-46ac-a67e-c7a5abc88549	0.0	Open	Major	WCMR_FastTrack_corrections	CCNA Certification Study Guide tb659181.CCNACert.SG.c22.20
-WELCM-65261	2022-10-21 1:11	2023-04-11 16:29	1391f926-9649-46af-a161-7507e647e3a7	0.0	Open	Major	WCMR_FastTrack_corrections	CCSP (ISC)2 Official Study Guide, 2nd Edition tb603375.CCSP.SG2E.be1.047
-WELCM-65374	2022-10-26 1:09	2023-04-11 16:28	3b694898-e481-442d-8e24-86b83c666071	0.0	Open	Major	WCMR_FastTrack_corrections	CCSP Official (ISC)2 Practice Tests, 2nd Edition tb603498.CCSPPT2E.c04.070
-WELCM-65956	2022-11-16 6:54	2023-10-27 12:10	9c683373-2f4b-436a-91aa-0d273629cfda	0.0	Open	Major	WCMR_FastTrack_corrections	CCSP Study Guide 3rd Edition tb909378.CCSPSG3E.c05.002
 WELCM-65887	2022-11-14 1:15	2023-08-29 1:08	e84ac15d-3794-4df4-9880-3533551bc1f5	0.0	Open	Major	WCMR_FastTrack_corrections	CEH v11 Certified Ethical Hacker Study Guide tb800286.CEHv11SG.pe1.073
 WELCM-70229	2023-08-03 1:10	2023-12-25 1:04	f9c6043d-08ed-4c3d-8e9d-bfdaf695c20f	0.0	Open	Major	WCMR_FastTrack_corrections	CEH v12 Study Guide tb186921.CEHv12SG.at.06
 WELCM-70123	2023-07-31 1:08	2024-01-01 1:05	f9c6043d-08ed-4c3d-8e9d-bfdaf695c20f	0.0	Open	Major	WCMR_FastTrack_corrections	CEH v12 Study Guide tb186921.CEHv12SG.c04.24
@@ -95,6 +92,7 @@ WELCM-71028	2023-08-14 1:12	2024-01-15 1:05	38da71b9-7221-4b13-829e-c18dca7f2f1b
 WELCM-69456	2023-07-27 9:07	2024-01-15 1:05	38da71b9-7221-4b13-829e-c18dca7f2f1b	2.0	In Progress	Major	WCMR_FastTrack_corrections	CompTIA CySA+ Practice Tests, 3rd Edition tb182930.CySAplPT3E.c02.020
 WELCM-72193	2023-09-26 1:05	2023-12-28 17:38	38da71b9-7221-4b13-829e-c18dca7f2f1b	2.0	In Progress	Major	WCMR_FastTrack_corrections	CompTIA CySA+ Practice Tests, 3rd Edition tb182930.CySAplPT3E.c02.084
 WELCM-64441	2022-09-19 1:16	2023-09-15 1:06	61c9fad5-39ef-45c0-bd94-72cdeb569612	0.0	Open	Major	WCMR_FastTrack_corrections	CompTIA Data+ Study Guide tb845256.DataPlSG.c03.05
+WELCM-69178	2023-03-13 19:49	2023-03-14 16:06		0.0	Open	Major	WCMR_FastTrack_corrections	CompTIA Data+ Study Guide tb845256.DataPlSG.c04.08
 WELCM-64506	2022-09-21 1:08	2024-01-08 1:06	61c9fad5-39ef-45c0-bd94-72cdeb569612	0.0	Open	Major	WCMR_FastTrack_corrections	CompTIA Data+ Study Guide tb845256.DataPlSG.pe1.60
 WELCM-67639	2023-01-25 14:35	2023-08-26 16:13	61c9fad5-39ef-45c0-bd94-72cdeb569612	0.0	Open	Major	WCMR_FastTrack_corrections	CompTIA Data+ Study Guide tb845256.DataPlSG.pe2.72
 WELCM-61799	2022-06-09 1:18	2023-12-21 1:05	c73e1564-c936-497b-b2ce-500a01ed2c9e	2.0	In Progress	Major	WCMR_FastTrack_corrections	CompTIA Network+ Deluxe Study Guide, 5th Edition tb811633.NetPlSG5E.c23.20
@@ -124,4 +122,3 @@ WELCM-60020	2022-04-06 1:13	2024-01-12 18:20	8e2ac285-0fdd-4869-bafe-ee77229af9b
 WELCM-61855	2022-06-13 1:17	2024-01-12 17:37	770782f3-e22b-4f69-b898-0c4d57b59a17	2.0	Open	Major	pmikhailov	OCP Java SE 17 Developer Study Guide tb864585.JaSE17SG.c09.07
 WELCM-67567	2023-01-23 1:17	2024-01-12 18:18	770782f3-e22b-4f69-b898-0c4d57b59a17	1.0	Open	Major	pmikhailov	OCP Java SE 17 Developer Study Guide tb864585.JaSE17SG.pe1.07
 WELCM-59702	2022-03-23 0:15	2023-10-11 13:25	9af8f4e6-0ee9-47de-afff-a61069df98bb	0.0	Open	Major	WCMR_FastTrack_corrections	PHR/SPHR Complete Study Guide, 5th Edition tb426738.PHRSPHRDSG2E.c05.19
-WELCM-69178	2023-03-13 19:49	2023-03-14 16:06		0.0	Open	Major	WCMR_FastTrack_corrections	CompTIA Data+ Study Guide tb845256.DataPlSG.c04.08
