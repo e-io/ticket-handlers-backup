@@ -8,19 +8,22 @@ general view:
 example of isbn: "978-1-119-70711-0". It can be 10 digits or 13 digits. It can be with hyphens or without them.
 """
 
+import csv
+import json
 import re
 import sys
-import csv
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from pprint import pprint
 
 import requests
 from text_to_num import alpha2digit
-from concurrent.futures import ThreadPoolExecutor
 
 from logger import logger
 
 # read_from = Path("Prioritized_products_containing_issues.tsv")
+
+logger.setLevel(level='INFO')
 
 class Book:
     def __init__(self):
@@ -48,7 +51,7 @@ class Book:
             print(item, '\n\t', data, sep='')
         """
 
-    def folder_name(self):
+    def create_folder_name(self):
         """
         :return: suggested folder name
         """
@@ -58,6 +61,7 @@ class Book:
         else:
             tuple_ = (author, self.isbn)
         folder = '_'.join(tuple_)
+        self.folder_name = folder
         logger.debug(folder)
 
 
@@ -81,16 +85,19 @@ def get_info_by_isbn(isbn: str):
     info = data_all['volumeInfo']
 
     # print all json
-    # print("-------\n", json.dumps(data_all, indent=2), "\n-------\n", sep='', end='')
+    print("-------\n", json.dumps(data_all, indent=2), "\n-------\n", sep='', end='')
 
     book = Book()
 
     def add_field(dict_: dict, field: str):
         return dict_[field] if field in dict_ else None
 
-    book.isbn = info['industryIdentifiers'][0]['identifier']
+    book.isbn = isbn  # or info['industryIdentifiers'][0 <or> 1]['identifier']
     book.authors = info['authors']
     book.title = info['title']
+    book.subtitle = info['subtitle'] if 'subtitle' in info else None
+    book.publisher = info['publisher']
+
     description = (info['description'] + ' ' + data_all['searchInfo']['textSnippet']).lower().replace('canadian', '')
     print(description)
     match = re.search("([A-Za-z0-9_-]*)\s+edition", description)
@@ -118,12 +125,13 @@ def get_info_by_isbn(isbn: str):
     book.text_snippet = data_all['searchInfo']['textSnippet']
 
     book.thumbnail = info["imageLinks"]['thumbnail']
+    book.info_link = info["infoLink"]
 
     book.rating = add_field(info, 'averageRating')
     book.ratings_count = add_field(info, 'ratingsCount')
+    book.create_folder_name()
 
-    # book.print_info()
-    # book.folder_name()
+    book.print_info()
 
     return book
 
@@ -142,13 +150,18 @@ def main(args: list):
 
     with open(path, 'w+') as file:
         writer = csv.writer(file, delimiter='\t')
-        header = ['isbn', 'published_date', 'authors', 'title', 'edition', 'pages']
+        header = ['isbn', 'published', 'edition',
+                  'pages', 'publisher', 'authors', 'title',
+                  'subtitle', 'category', 'info link']
 
         writer.writerow(header)
         for book in books:
-            row = [book.isbn, book.published_date, ', '.join(book.authors), book.title, book.edition, book.page_count]
+            row = [book.isbn, book.published_date, book.edition,
+                   book.page_count, book.publisher, ', '.join(book.authors), book.title,
+                   book.subtitle, book.category, book.info_link]
             writer.writerow(row)
     logger.debug("Work completed")
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
