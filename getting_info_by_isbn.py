@@ -10,16 +10,19 @@ example of isbn: "978-1-119-70711-0". It can be 10 digits or 13 digits. It can b
 
 import re
 import sys
+import csv
 from pathlib import Path
 from pprint import pprint
 
 import requests
 from text_to_num import alpha2digit
+from concurrent.futures import ThreadPoolExecutor
 
-read_from = Path("Prioritized_products_containing_issues.tsv")
+from logger import logger
+
+# read_from = Path("Prioritized_products_containing_issues.tsv")
 
 class Book:
-
     def __init__(self):
         pass
 
@@ -46,13 +49,16 @@ class Book:
         """
 
     def folder_name(self):
+        """
+        :return: suggested folder name
+        """
         author = self.authors[0].split(' ')[-1]
         if self.edition is not None:
             tuple_ = (author, str(self.edition) + 'e', self.isbn)
         else:
             tuple_ = (author, self.isbn)
         folder = '_'.join(tuple_)
-        print(folder)
+        logger.debug(folder)
 
 
 def get_info_by_isbn(isbn: str):
@@ -116,14 +122,33 @@ def get_info_by_isbn(isbn: str):
     book.rating = add_field(info, 'averageRating')
     book.ratings_count = add_field(info, 'ratingsCount')
 
-    book.print_info()
-    book.folder_name()
+    # book.print_info()
+    # book.folder_name()
+
+    return book
 
 
 def main(args: list):
-    for arg in args:
-        get_info_by_isbn(arg)
+    with ThreadPoolExecutor() as pool:
+        results = pool.map(get_info_by_isbn, args)
 
+    books = []
+    for result in results:
+        if result != 0:
+            # result.print_info()
+            books.append(result)
+
+    path = Path('products.tsv')
+
+    with open(path, 'w+') as file:
+        writer = csv.writer(file, delimiter='\t')
+        header = ['isbn', 'published_date', 'authors', 'title', 'edition', 'pages']
+
+        writer.writerow(header)
+        for book in books:
+            row = [book.isbn, book.published_date, ', '.join(book.authors), book.title, book.edition, book.page_count]
+            writer.writerow(row)
+    logger.debug("Work completed")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
