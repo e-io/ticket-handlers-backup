@@ -2,10 +2,10 @@ from pathlib import Path
 
 from logger import logger
 
-path_tickets = Path('WELCM tickets.tsv')
-path_isbns = Path('MCS_Ingestion_Tracker Test_Banks ISBN Sybex.txt')
+path_tickets = Path('Tickets_Sybex.tsv')
+path_isbns = Path('ISBNs_TB_import_Sybex.tsv')
 
-path_tickets_new = path_tickets.stem + '_handled' + path_tickets.suffix
+path_tickets_new = 'output' / path_tickets.stem + '_handled' + path_tickets.suffix
 
 tickets = []
 with open(path_tickets) as file_tickets:
@@ -14,7 +14,7 @@ with open(path_tickets) as file_tickets:
 isbn_intersection = []
 
 with open(path_isbns) as file_isbns:
-    for row in file_isbns.readlines():
+    for row in file_isbns.readlines()[1:]:
         for ticket in tickets:
             if row[-7:-1] in ticket:
                 logger.debug(f"'{row.rstrip()}'")
