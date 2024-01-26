@@ -39,22 +39,42 @@ class Book:
         :return: suggested folder name
         """
         author = self.authors[0].split(' ')[-1]
-        if self.edition is not None:
-            tuple_ = (author, str(self.edition) + 'e', self.isbn)
-        else:
-            tuple_ = (author, self.isbn)
+        tuple_ = (author, str(self.edition) + 'e', self.isbn) if self.edition is not None else (author, self.isbn)
         folder = '_'.join(tuple_)
         self.folder_name = folder
         logger.debug(folder)
+
+    def search_edition(self, description: str):
+        """------Searching edition----------"""
+        match = re.search(r'([A-Za-z0-9_-]*)\s+edition', description)
+        self.edition = match.group(1).lower() if match is not None else None
+        logger.debug('edition is %s', self.edition)
+        if self.edition is not None:
+            logger.debug(self.edition)
+            if self.edition == 'second':
+                self.edition = 2
+            elif self.edition == 'third':
+                self.edition = 3
+            else:
+                self.edition = alpha2digit(self.edition, 'en')
+                match_num = re.search('([0-9]*)', self.edition)
+                if match_num is not None:
+                    num = match_num.group(1)
+                    if len(num) != 0:
+                        self.edition = int(num)
+                    else:
+                        self.edition = None
+        # ---------------------
 
 
 def get_info_by_isbn(isbn: str):
     url = 'https://www.googleapis.com/books/v1/volumes?q=isbn:' + isbn
 
-    response = requests.get(url)
+    response = requests.get(url, timeout=15)
 
     if not bool(response):
-        raise Exception("Answer wasn't gotten. Response:", response)
+        msg = "Answer wasn't gotten. Response: " + response
+        raise Exception(msg)
 
     json_all = response.json()
     if json_all['totalItems'] == 0:
@@ -62,8 +82,11 @@ def get_info_by_isbn(isbn: str):
         return 0
 
     if json_all['totalItems'] > 1:
-        logger.warning("Book with ISBN %s has several 'items'. Book is not skipped. \n"
-                       "First item it taken, because usually items are identical.\n", isbn)
+        logger.warning(
+            "Book with ISBN %s has several 'items'. Book is not skipped. \n"
+            'First item is taken, because usually items are identical.\n',
+            isbn,
+        )
         # logger.debug('\n-------\n%s\n-------\n', json.dumps(json_all['items'], indent=2))  # to show all items inside
         # return 0
 
@@ -87,26 +110,7 @@ def get_info_by_isbn(isbn: str):
     description = (info['description'] + ' ' + data_all['searchInfo']['textSnippet']).lower().replace('canadian', '')
     logger.debug(description)
 
-    # ------Searching edition----------
-    match = re.search('([A-Za-z0-9_-]*)\s+edition', description)
-    book.edition = match.group(1).lower() if match is not None else None
-    logger.debug('edition is %s', book.edition)
-    if book.edition is not None:
-        logger.debug(book.edition)
-        if book.edition == 'second':
-            book.edition = 2
-        elif book.edition == 'third':
-            book.edition = 3
-        else:
-            book.edition = alpha2digit(book.edition, 'en')
-            match_num = re.search('([0-9]*)', book.edition)
-            if match_num is not None:
-                num = match_num.group(1)
-                if len(num) != 0:
-                    book.edition = int(num)
-                else:
-                    book.edition = None
-    # ---------------------
+    book.search_edition(description)
 
     book.category = info['categories'][0]
     book.published_date = info['publishedDate']
@@ -131,11 +135,7 @@ def get_info_by_isbn(isbn: str):
 
 
 def create_tsv(results: list):
-    books = []
-    for result in results:
-        if result != 0:
-            # result.print_info()
-            books.append(result)
+    books = [result for result in results if result != 0]
 
     path = Path('products.tsv')
 
@@ -186,5 +186,6 @@ def main(args: list):
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        raise Exception("Not enough arguments. Pass ISBN(s) as arguments.")
+        msg = 'Not enough arguments. Pass ISBN(s) as arguments.'
+        raise Exception(msg)
     main(sys.argv[1:])
