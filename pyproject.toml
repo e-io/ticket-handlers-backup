@@ -1,0 +1,13 @@
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select=['ALL']
+ignore=['D', 'ANN', 'ERA',
+    'PTH', 'TRY', 'T201',
+    'Q000', 'Q003', 'COM812',
+    'ISC001', 'T203']
+
+
+[tool.ruff.format]
+quote-style = 'single'
