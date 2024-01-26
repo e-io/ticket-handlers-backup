@@ -141,12 +141,16 @@ def create_tsv(results: list):
     output.mkdir(exist_ok=True)
     path = output / 'Products.tsv'
 
-    with open(path, 'w+') as file:
+    with (
+        open(path, 'w+') as file,
+        # remove this and related lines (`# Sybex`) below if you use script for other purposes
+        open('Tickets_Sybex.tsv') as file_tickets,  # Sybex
+    ):
         writer = csv.writer(file, delimiter='\t')
         header = [
             'isbn',
             'published',
-            'edition',
+            'edition (supposed)',
             'pages',
             'publisher',
             'authors',
@@ -155,10 +159,16 @@ def create_tsv(results: list):
             'category',
             'full JSON',
             'info link',
+            '# of tickets',
         ]
+
+        tickets = ' '.join(file_tickets.readlines())  # Sybex
 
         writer.writerow(header)
         for book in books:
+            last6 = book.isbn[-6:]  # Sybex
+            n = tickets.count(last6)  # Sybex
+
             row = [
                 book.isbn,
                 book.published_date,
@@ -171,6 +181,7 @@ def create_tsv(results: list):
                 book.category,
                 book.full_json,
                 book.info_link,
+                n,  # Sybex
             ]
             writer.writerow(row)
 
