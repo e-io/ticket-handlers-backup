@@ -137,7 +137,9 @@ def get_info_by_isbn(isbn: str):
 def create_tsv(results: list):
     books = [result for result in results if result != 0]
 
-    path = Path('output/Products.tsv')
+    output = Path('output')
+    output.mkdir(exist_ok=True)
+    path = output / 'Products.tsv'
 
     with open(path, 'w+') as file:
         writer = csv.writer(file, delimiter='\t')
