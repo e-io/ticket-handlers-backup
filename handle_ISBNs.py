@@ -7,7 +7,7 @@ path_isbns = Path('MCS_Ingestion_Tracker Test_Banks ISBN Sybex.txt')
 
 path_tickets_new = path_tickets.stem + '_handled' + path_tickets.suffix
 
-tickets = list()
+tickets = []
 with open(path_tickets) as file_tickets:
     tickets = file_tickets.readlines()
 
