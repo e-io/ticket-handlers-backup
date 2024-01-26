@@ -62,8 +62,11 @@ def get_info_by_isbn(isbn: str):
         return 0
 
     if json_all['totalItems'] > 1:
-        logger.warning("Book with ISBN %s has several 'items'. Book is not skipped. \n"
-                       "First item it taken, because usually items are identical.\n", isbn)
+        logger.warning(
+            "Book with ISBN %s has several 'items'. Book is not skipped. \n"
+            "First item it taken, because usually items are identical.\n",
+            isbn,
+        )
         # logger.debug('\n-------\n%s\n-------\n', json.dumps(json_all['items'], indent=2))  # to show all items inside
         # return 0
 
@@ -186,5 +189,5 @@ def main(args: list):
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        raise Exception("Not enough arguments. Pass ISBN(s) as arguments.")
+        raise Exception('Not enough arguments. Pass ISBN(s) as arguments.')
     main(sys.argv[1:])

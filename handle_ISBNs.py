@@ -2,18 +2,18 @@ from pathlib import Path
 
 from logger import logger
 
-path_tickets = Path("WELCM tickets.tsv")
-path_isbns = Path("MCS_Ingestion_Tracker Test_Banks ISBN Sybex.txt")
+path_tickets = Path('WELCM tickets.tsv')
+path_isbns = Path('MCS_Ingestion_Tracker Test_Banks ISBN Sybex.txt')
 
-path_tickets_new = path_tickets.stem + "_handled" + path_tickets.suffix
+path_tickets_new = path_tickets.stem + '_handled' + path_tickets.suffix
 
 tickets = list()
-with open(path_tickets, "r") as file_tickets:
+with open(path_tickets, 'r') as file_tickets:
     tickets = file_tickets.readlines()
 
 isbn_intersection = []
 
-with open(path_isbns, "r") as file_isbns:
+with open(path_isbns, 'r') as file_isbns:
     for row in file_isbns.readlines():
         for ticket in tickets:
             if row[-7:-1] in ticket:
@@ -35,4 +35,3 @@ with open(path_tickets, 'r') as file_tickets:
             new_row = row.rstrip() + '\t' + tail + '\n'
             logger.debug(new_row)
             file_tickets_new.write(new_row)
-
