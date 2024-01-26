@@ -91,7 +91,7 @@ def get_info_by_isbn(isbn: str):
     logger.debug(description)
 
     # ------Searching edition----------
-    match = re.search('([A-Za-z0-9_-]*)\s+edition', description)
+    match = re.search(r'([A-Za-z0-9_-]*)\s+edition', description)
     book.edition = match.group(1).lower() if match is not None else None
     logger.debug('edition is %s', book.edition)
     if book.edition is not None:
