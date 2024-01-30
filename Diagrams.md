@@ -6,7 +6,7 @@
 
 ```mermaid
 graph TD
-    Ticket("Choose a ticket \n<a href='https://bit.ly/jira-welcm-sybex'>List of open\n <b>Sybex</b> tickets</a>") --> |"Copy <b>six digits</b> which follow\nafter 'tb' (like tb012345)"| SpreadSheet("<a href='https://wiley.sharepoint.com/:x:/r/teams/ReprintDocuments/_layouts/15/guestaccess.aspx?wdLOR=c91F00341-4041-9042-9857-DA8734875602&share=ERUV8UaGHgFJkVfPr9xtEEsBu2JC2_4kJIalHtErZPLcMA'>Find ISBN with this ending\nin Sybex_TB_SMEs.xslx"</a>)
+    Ticket("Choose a ticket \n<a href='https://jira.wiley.com/browse/WELCM-29476?filter=67750'>List of open\n <b>Sybex</b> tickets</a>") --> |"Copy <b>six digits</b> which follow\nafter ''tb'' (like tb012345)"| SpreadSheet("<a href='https://wiley.sharepoint.com/:x:/r/teams/ReprintDocuments/_layouts/15/guestaccess.aspx?wdLOR=c91F00341-4041-9042-9857-DA8734875602&share=ERUV8UaGHgFJkVfPr9xtEEsBu2JC2_4kJIalHtErZPLcMA'>Find ISBN with this ending\nin Sybex_TB_SMEs.xslx"</a>)
     
     SpreadSheet --> |Copy the course name\nin the column <b>М</b>| WEL("Find this course in <a href='https://uat3app.efficientlearning.com/my-account/rest/masquerade/login?u=adde93aa-59ba-4b15-b84e-ebe12b8515a4'>WEL test bank</a>")
     
@@ -38,17 +38,20 @@ graph TD
 
 ```mermaid
 graph TD
-    Alfresco("Open <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/documentlibrary#filter=path%7C%2FWiley%20Content%2FProducts'>Alfresco</a>") --> |Find question by inserting\n''Location of Content''\n as the last term of the <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/site//document-details?nodeRef=workspace://SpacesStore/06cd5372-fca5-42d4-a9ff-6abea34d5b81'>address</a>| inlineEdit("change XML \nand click 'Save' twice")
+    QInAlfreco("Find question by inserting\nGUID ''Location of Content''\n as the last term of the <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/site//document-details?nodeRef=workspace://SpacesStore/06cd5372-fca5-42d4-a9ff-6abea34d5b81'>address</a>") -->  inlineEdit("change XML \nand click 'Save' twice")
     
     inlineEdit --> note("Leave a note \n'WELCM-12345' has been fixed")
     
-    note --> |Find product \nby typing last 6 digits one-by-one \n- in ''a course JSON node'' field| publish("Click ''Wiley Publish (Offline)''")
+    note --> Alfresco("Open <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/documentlibrary#filter=path%7C%2FWiley%20Content%2FProducts'>Alfresco main page</a>")
     
-    publish --> checkQueue("Check <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/queue-publish'>'publish queue'</a>")
+    Alfresco --> |Find product \nby typing one-by-one\nlast 6 digits of ISBN \n in ''a course JSON node'' field| publish("Click ''Wiley Publish (Offline)''")
     
-    checkQueue -->Jenkins("Schedule a build\nin <a href='http://ci.efficientlearning.com'>Jenkins</a>")
+    publish --> checkQueue("Check <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/queue-publish'>''publish queue''</a>")
     
-    Jenkins --> CheckWEL("Check that at least \none question in WEL was fixed successfully")
+    checkQueue -->Jenkins("Open <a href='http://ci.efficientlearning.com'>Jenkins</a>")
+    
+    
+    Jenkins --> |Find product and schedule\na build in Jenkins| CheckWEL("Check that at least \none question in WEL\nwas fixed successfully")
     
     CheckWEL --> Comment("Write results:\n<i>This has been fixed in UAT;\n it's being waited an update on PROD.</i>")
     
