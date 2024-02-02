@@ -6,7 +6,8 @@
 
 ```mermaid
 graph TD
-    Ticket("Choose a ticket \n<a href='https://jira.wiley.com/browse/WELCM-29476?filter=67750'>List of open\n <b>Sybex</b> tickets</a>") --> |"Copy <b>six digits</b> which follow\nafter ''tb'' (like tb012345)"| SpreadSheet("<a href='https://wiley.sharepoint.com/:x:/r/teams/ReprintDocuments/_layouts/15/guestaccess.aspx?wdLOR=c91F00341-4041-9042-9857-DA8734875602&share=ERUV8UaGHgFJkVfPr9xtEEsBu2JC2_4kJIalHtErZPLcMA'>Find ISBN with this ending\nin Sybex_TB_SMEs.xslx"</a>)
+Choose("Choose <a href='https://wiley-my.sharepoint.com/:x:/r/personal/pmikhailov_wiley_com/_layouts/15/Doc.aspx?sourcedoc=%7B8ebf8fd0-f213-49d1-ba83-d848a9878b3c%7D'>a Sybex product</a>\nto work with.\nCopy the last <b>6 digits</b>\nof ISBN") --> Ticket
+    Ticket("<a href='https://jira.wiley.com/browse/WELCM-29476?filter=67750'>Find</a> all tickets\nfor the product.\nSearch ''tb123456''\nor just ''123456''") --> |"Use the same\n6 digits"| SpreadSheet("Find ISBN with this ending\nin <a href='https://wiley.sharepoint.com/:x:/r/teams/ReprintDocuments/_layouts/15/guestaccess.aspx?wdLOR=c91F00341-4041-9042-9857-DA8734875602&share=ERUV8UaGHgFJkVfPr9xtEEsBu2JC2_4kJIalHtErZPLcMA'>Sybex_TB_SMEs.xslx"</a>)
     
     SpreadSheet --> |Copy the course name\nin the column <b>М</b>| WEL("Find this course in <a href='https://uat3app.efficientlearning.com/my-account/rest/masquerade/login?u=adde93aa-59ba-4b15-b84e-ebe12b8515a4'>WEL test bank</a>")
     
@@ -40,7 +41,7 @@ graph TD
 graph TD
     QInAlfreco("Find question by inserting\nGUID ''Location of Content''\n as the last term of the <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/site//document-details?nodeRef=workspace://SpacesStore/06cd5372-fca5-42d4-a9ff-6abea34d5b81'>address</a>") -->  inlineEdit("change XML \nand click 'Save' twice")
     
-    inlineEdit --> note("Leave a note \n'WELCM-12345' has been fixed")
+    inlineEdit --> note("Leave a note \n<i>'WELCM-12345' has been fixed</i>")
     
     note --> Alfresco("Open <a href='http://ec2-34-233-201-87.compute-1.amazonaws.com:9090/share/page/documentlibrary#filter=path%7C%2FWiley%20Content%2FProducts'>Alfresco main page</a>")
     
@@ -51,7 +52,7 @@ graph TD
     checkQueue -->Jenkins("Open <a href='http://ci.efficientlearning.com'>Jenkins</a>")
     
     
-    Jenkins --> |Find product and schedule\na build in Jenkins| CheckWEL("Check that at least \none question in WEL\nwas fixed successfully")
+    Jenkins --> |Find <b>QA</b>-product and schedule\na build in Jenkins| CheckWEL("Check that at least \none question in WEL\nwas fixed successfully")
     
     CheckWEL --> Comment("Write results:\n<i>This has been fixed in UAT;\n it's being waited an update on PROD.</i>")
     
