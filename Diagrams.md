@@ -9,7 +9,7 @@ graph TD
 Choose("Choose <a href='https://wiley-my.sharepoint.com/:x:/r/personal/pmikhailov_wiley_com/_layouts/15/Doc.aspx?sourcedoc=%7B8ebf8fd0-f213-49d1-ba83-d848a9878b3c%7D'>a Sybex product</a>\nto work with.\nCopy the last <b>6 digits</b>\nof ISBN") --> Ticket
     Ticket("<a href='https://jira.wiley.com/browse/WELCM-29476?filter=67750'>Find</a> all tickets\nfor the product.\nSearch ''tb123456''\nor just ''123456''") --> |"Use the same\n6 digits"| SpreadSheet("Find ISBN with this ending\nin <a href='https://wiley.sharepoint.com/:x:/r/teams/ReprintDocuments/_layouts/15/guestaccess.aspx?wdLOR=c91F00341-4041-9042-9857-DA8734875602&share=ERUV8UaGHgFJkVfPr9xtEEsBu2JC2_4kJIalHtErZPLcMA'>Sybex_TB_SMEs.xslx"</a>)
     
-    SpreadSheet --> |Copy the course name\nin the column <b>М</b>| WEL("Find this course in <a href='https://uat3app.efficientlearning.com/my-account/rest/masquerade/login?u=adde93aa-59ba-4b15-b84e-ebe12b8515a4'>WEL test bank</a>")
+    SpreadSheet --> |Copy the course name\nin the column <b>М</b>| WEL("Find this course in <a href='https://uat3app.efficientlearning.com/my-account'>WEL test bank</a>")
     
     WEL--> |Copy full Question ID from Jira\nand find question in WEL| WELQuestion("Open question,\nclick correct answer,\nsnap a screenshot")
     
